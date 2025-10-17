@@ -1,0 +1,29 @@
+[project]
+name = "shap-live-engine"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "pydantic>=2.0",
+  "polars",
+  "duckdb",
+  "redis",
+  "msgpack",
+  "python-dotenv",
+  "watchdog",
+  "prometheus-client",
+  "websockets",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "ruff",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

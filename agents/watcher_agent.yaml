@@ -1,0 +1,23 @@
+name: shap-watcher
+version: 1.0.0
+schema: v1
+models:
+  - uses: ollama/qwen2.5-coder-14b
+tools:
+  - python: agents.tools:load_parquet
+  - python: agents.tools:refresh_duckdb
+  - python: agents.tools:publish_winprob
+triggers:
+  - type: filesystem
+    path: data/nfl_predictions
+    pattern: "**/*.parquet"
+  - type: redis_pubsub
+    channel: shap_updates
+logic:
+  - on_event: any
+    steps:
+      - call: refresh_duckdb
+      - call: publish_winprob
+        with:
+          gid: "${event.gid}"
+          payload: "${event.payload}"

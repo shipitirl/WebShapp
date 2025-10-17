@@ -1,0 +1,23 @@
+name: shap-drift-monitor
+version: 1.0.0
+schema: v1
+models:
+  - uses: ollama/qwen2.5-coder-14b
+tools:
+  - python: agents.tools:compute_drift
+  - python: agents.tools:trigger_retrain
+schedule:
+  cron: "*/5 * * * *"
+logic:
+  - on_event: schedule
+    steps:
+      - call: compute_drift
+        with:
+          season: 2025
+          week: 6
+      - if: "${result.trigger}"
+        then:
+          - call: trigger_retrain
+            with:
+              model_version: "${result.model_version}"
+              reason: "${result.reason}"
