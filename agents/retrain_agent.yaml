@@ -1,0 +1,18 @@
+name: shap-retrainer
+version: 1.0.0
+schema: v1
+models:
+  - uses: ollama/qwen2.5-coder-14b
+tools:
+  - python: agents.tools:load_parquet
+  - python: agents.tools:trigger_retrain
+logic:
+  - on_event: manual
+    steps:
+      - call: load_parquet
+        with:
+          partition_glob: "data/nfl_predictions/season=*/week=*/*.parquet"
+      - call: trigger_retrain
+        with:
+          model_version: v0
+          reason: manual

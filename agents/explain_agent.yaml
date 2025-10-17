@@ -1,0 +1,15 @@
+name: shap-explainer
+version: 1.0.0
+schema: v1
+models:
+  - uses: ollama/qwen2.5-coder-14b
+tools:
+  - python: agents.tools:load_parquet
+logic:
+  - on_event: schedule
+    schedule:
+      cron: "0 * * * *"
+    steps:
+      - call: load_parquet
+        with:
+          partition_glob: "data/nfl_predictions/season=*/week=*/*.parquet"

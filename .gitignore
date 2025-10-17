@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+node_modules/
+webapp/node_modules/
+logs/
+reports/
+data/live.duckdb
+artifacts/

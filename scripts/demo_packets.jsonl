@@ -1,0 +1,2 @@
+{"ts": 1700000000000, "y_pred": 0.55, "state": {"q": 1, "time_left": 900, "down": 1, "dist": 10, "yardline": 25, "to_a": 3, "to_b": 3, "score_a": 0, "score_b": 0}, "shap": [{"f": "QB_pressure_rate", "s": 0.02}, {"f": "WR_sep", "s": 0.01}], "model_version": "v0", "sleep": 1.0}
+{"ts": 1700000005000, "y_pred": 0.6, "state": {"q": 1, "time_left": 850, "down": 2, "dist": 5, "yardline": 40, "to_a": 3, "to_b": 3, "score_a": 0, "score_b": 0}, "shap": [{"f": "QB_pressure_rate", "s": 0.03}, {"f": "WR_sep", "s": 0.02}], "model_version": "v0", "sleep": 1.0}
