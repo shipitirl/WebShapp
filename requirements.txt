@@ -1,0 +1,2 @@
+# WebShapp intentionally avoids external runtime dependencies.
+# Pytest is available in the execution environment for running the test suite.
